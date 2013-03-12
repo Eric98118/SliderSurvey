@@ -131,6 +131,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataLayer\SurveyContext.cs" />
+    <Compile Include="DataLayer\SurveyContextInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,6 +141,7 @@
     <Compile Include="Models\SurveyResult.cs" />
     <Compile Include="Models\ValueCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DbInitSurveyHandler.cs" />
     <Compile Include="Services\HardcodedSurveyHandler.cs" />
     <Compile Include="Services\ISurveyHandler.cs" />
     <Compile Include="SharedController.generated.cs">

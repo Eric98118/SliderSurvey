@@ -5,9 +5,9 @@ using System.Web;
 
 namespace SliderSurvey.ViewModels {
     public class SurveyViewModel {
-        public int              MinSelectedItems;
-        public int              MaxSelectedItems;
-        public List<string>     AllValues;
-        public string           UserID;
+        public int                          MinSelectedItems;
+        public int                          MaxSelectedItems;
+        public Dictionary<string, string>   AllValues;
+        public string                       UserID;
     }
 }

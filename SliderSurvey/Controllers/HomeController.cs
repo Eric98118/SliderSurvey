@@ -18,7 +18,7 @@ namespace SliderSurvey.Controllers {
         }
 
         public virtual ActionResult StartSurvey() {
-            ISurveyHandler handler = new HardcodedSurveyHandler(); // should have a factory or something for this, but hardcoding works for now. DI maybe?
+            ISurveyHandler handler = new DbInitSurveyHandler(); // should have a factory or something for this, but hardcoding works for now. DI maybe?
             var model = handler.PopulateInitialSurvey("ABC");
             return View(model);
         }

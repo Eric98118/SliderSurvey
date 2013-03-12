@@ -73,17 +73,17 @@
 <h2>Start Survey</h2>
 
 <form id="mainForm" action="/Home/PostSurvey" method="post">
-    @foreach (var name in @Model.AllValues) {
-        var textboxName = name + "Amount";
-        var sliderName = name + "Slider";
+    @foreach (var dict in @Model.AllValues) {
+        var textboxName = dict.Key + "Amount";
+        var sliderName = dict.Key + "Slider";
         <span class="firstcolumn">
-            <label for="@textboxName">@name:</label>
+            <label for="@textboxName">@dict.Key:</label>
         </span>
         <span class="secondcolumn">
-            <input type="text" id="@textboxName" class="amount" name="@name" />
+            <input type="text" id="@textboxName" class="amount" name="@dict.Key" title="@dict.Value" />
         </span>
         <div class="sliderwrapper">
-            <div id="@sliderName" class="slider"></div>
+            <div id="@sliderName" title="@dict.Value" class="slider"></div>
         </div>
         <br />
         

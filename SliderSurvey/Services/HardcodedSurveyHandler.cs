@@ -13,18 +13,9 @@ namespace SliderSurvey.Services {
             result.MinSelectedItems = 3;
             result.MaxSelectedItems = 5;
             result.UserID = userId;
-            result.AllValues = new List<string>() { "Honesty",
-                                                    "Trust",
-                                                    "Bravery",
-                                                    "Intelligence",
-                                                    "Dexterity",
-                                                    "Charisma",
-                                                    "Strength",
-                                                    "Family",
-                                                    "Friends",
-                                                    "Work",
-                                                    "Laziness"
-                                                  };
+            result.AllValues = new Dictionary<string, string>() {
+                { "Honesty", "Cool stuff yeah" },
+            };
             return result;
         }
 
@@ -33,7 +24,7 @@ namespace SliderSurvey.Services {
             result.MinSelectedItems = 1;
             result.MaxSelectedItems = 2;
             result.UserID = userId;
-            result.AllValues = new List<string>(options);
+            result.AllValues = new Dictionary<string, string>();
             return result;
         }
     }
