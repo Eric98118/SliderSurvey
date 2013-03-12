@@ -62,6 +62,7 @@ namespace SliderSurvey.Controllers
         {
             public readonly string Index = "Index";
             public readonly string StartSurvey = "StartSurvey";
+            public readonly string FormTest = "FormTest";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -69,6 +70,7 @@ namespace SliderSurvey.Controllers
         {
             public const string Index = "Index";
             public const string StartSurvey = "StartSurvey";
+            public const string FormTest = "FormTest";
         }
 
 
@@ -82,9 +84,11 @@ namespace SliderSurvey.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string FormTest = "FormTest";
                 public readonly string Index = "Index";
                 public readonly string StartSurvey = "StartSurvey";
             }
+            public readonly string FormTest = "~/Views/Home/FormTest.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
             public readonly string StartSurvey = "~/Views/Home/StartSurvey.cshtml";
         }
@@ -110,6 +114,15 @@ namespace SliderSurvey.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.StartSurvey);
             StartSurveyOverride(callInfo);
+            return callInfo;
+        }
+
+        partial void FormTestOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        public override System.Web.Mvc.ActionResult FormTest()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FormTest);
+            FormTestOverride(callInfo);
             return callInfo;
         }
 

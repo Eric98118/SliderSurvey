@@ -33,19 +33,33 @@
             $('#' + element.id).val(sliderValues[$('#' + sliderName).slider("value")]);
         });
 
-        // Grab the key/value pairs for all the sliders and serialize the results
+        //// Grab the key/value pairs for all the sliders and serialize the results
+        //$('#MainSubmitButton').click(function (event) {
+        //    debugger;
+        //    event.preventDefault();
+        //    var result = new Array();
+        //    $('.amount').each(function (index, element) {
+        //        var dict = new Object();
+        //        dict.key = element.id.replace('Amount', '');
+        //        dict.value = $('#' + element.id).val();
+        //        result[index] = dict;
+        //    });
+        //    var serializedData = JSON.stringify(result);
+        //    alert(serializedData);
+        //});
+
+        // Validate the submission before it is sent.
         $('#MainSubmitButton').click(function (event) {
             debugger;
-            event.preventDefault();
-            var result = new Array();
+            var amountOfVeryImportant = 0;
             $('.amount').each(function (index, element) {
-                var dict = new Object();
-                dict.key = element.id.replace('Amount', '');
-                dict.value = $('#' + element.id).val();
-                result[index] = dict;
+                if ($('#' + element.id).val() == "Very Important")
+                    amountOfVeryImportant++;
             });
-            var serializedData = JSON.stringify(result);
-            alert(serializedData);
+            if (amountOfVeryImportant == 0) {
+                alert("You must select at least one value as very important.");
+                return false;
+            }
         });
     });
 
@@ -55,22 +69,24 @@
 
 <h2>Start Survey</h2>
 
-<form id="mainForm" action="/" method="post">
+<form id="mainForm" action="/Home/PostSurvey" method="post">
     @foreach (var name in @Model) {
         var textboxName = name + "Amount";
         var sliderName = name + "Slider";
         <span class="firstcolumn">
-            <label>@name:</label>
+            <label for="@textboxName">@name:</label>
         </span>
         <span class="secondcolumn">
-            <input type="text" id="@textboxName" class="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+            <input type="text" id="@textboxName" class="amount" name="@name" />
         </span>
         <div class="sliderwrapper">
             <div id="@sliderName" class="slider"></div>
         </div>
         <br />
+        
     }
-
-    <button id="MainSubmitButton">Click Me</button>
+    <input type="hidden" name="UserId" value="ABC123" />
+    <input type="submit" id="MainSubmitButton" value="register" />
+    
 </form>
 

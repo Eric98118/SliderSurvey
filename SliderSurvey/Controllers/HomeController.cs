@@ -18,5 +18,27 @@ namespace SliderSurvey.Controllers {
             return View(seedData);
         }
 
+        [HttpPost]
+        public virtual string FormTest(string input) {
+            return "submitted";
+        }
+
+        public virtual ActionResult FormTest() {
+            return View();
+        }
+
+        [HttpPost]
+        public virtual string PostSurvey(FormCollection formValues, string UserId) {
+            int i = 0;
+            string result = "";
+            result += "User Id of Awesomeness: " + UserId + "<br />";
+            formValues.Remove("UserId");
+            foreach (var key in formValues.AllKeys) {
+                result += "Index: " + i.ToString() + " Key: " + key + " Value: " + formValues[key] + ". <br />";
+                i++;
+            }
+            return result;
+        }
+
     }
 }

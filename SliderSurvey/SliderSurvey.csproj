@@ -248,6 +248,7 @@
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\StartSurvey.cshtml" />
+    <Content Include="Views\Home\FormTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

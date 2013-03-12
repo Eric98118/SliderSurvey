@@ -14,3 +14,9 @@ span.secondcolumn {
     word-spacing: 0;
     width: 200px;
 }
+
+.amount {
+    border: 0;
+    color: #f6931f;
+    font-weight: bold;
+}
