@@ -1,4 +1,4 @@
-﻿@model List<string>
+﻿@model SliderSurvey.ViewModels.SurveyViewModel
 
 @{
     ViewBag.Title = "StartSurvey";
@@ -51,13 +51,16 @@
         // Validate the submission before it is sent.
         $('#MainSubmitButton').click(function (event) {
             debugger;
+            var minimumItems = @Model.MinSelectedItems;
+            var maximumItems = @Model.MaxSelectedItems;
+            var alertString = "Please put between " + minimumItems + " and " + maximumItems + " values in the Very Important Category.";
             var amountOfVeryImportant = 0;
             $('.amount').each(function (index, element) {
                 if ($('#' + element.id).val() == "Very Important")
                     amountOfVeryImportant++;
             });
-            if (amountOfVeryImportant == 0) {
-                alert("You must select at least one value as very important.");
+            if ((amountOfVeryImportant < minimumItems ) || (amountOfVeryImportant > maximumItems)) {
+                alert(alertString);
                 return false;
             }
         });
@@ -70,7 +73,7 @@
 <h2>Start Survey</h2>
 
 <form id="mainForm" action="/Home/PostSurvey" method="post">
-    @foreach (var name in @Model) {
+    @foreach (var name in @Model.AllValues) {
         var textboxName = name + "Amount";
         var sliderName = name + "Slider";
         <span class="firstcolumn">
@@ -85,7 +88,7 @@
         <br />
         
     }
-    <input type="hidden" name="UserId" value="ABC123" />
+    <input type="hidden" name="UserId" value="@Model.UserID" />
     <input type="submit" id="MainSubmitButton" value="register" />
     
 </form>

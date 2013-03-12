@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SliderSurvey.DataLayer;
+using SliderSurvey.Models;
+using SliderSurvey.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,14 +11,16 @@ namespace SliderSurvey.Controllers {
     public partial class HomeController : Controller {
         //
         // GET: /Home/
+        SurveyContext db = new SurveyContext();
 
         public virtual ActionResult Index() {
             return View();
         }
 
         public virtual ActionResult StartSurvey() {
-            var seedData = new List<string>() { "Honesty", "Courage", "Intelligence"};
-            return View(seedData);
+            ISurveyHandler handler = new HardcodedSurveyHandler(); // should have a factory or something for this, but hardcoding works for now. DI maybe?
+            var model = handler.PopulateInitialSurvey("ABC");
+            return View(model);
         }
 
         [HttpPost]
